@@ -15,7 +15,7 @@ print(bcolors.FAIL + bcolors.BOLD + "AN ENEMY ATTACKS!" + bcolors.ENDC)
 while running:
     print("====================")
     player.choose_action()
-    choice = input("Choose action:")
+    choice = input("Choose action: ")
     index = int(choice) - 1  # Indexes starts from 0
 
     if index == 0:
@@ -32,7 +32,7 @@ while running:
         current_mp = player.get_mp()
 
         if cost > current_mp:
-            print(bcolors.Fail + "\nNot enough MP\n" + bcolors.ENDC)
+            print(bcolors.FAIL + "\nNot enough MP\n" + bcolors.ENDC)
             continue
 
         player.reduce_mp(cost)
