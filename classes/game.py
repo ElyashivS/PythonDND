@@ -25,7 +25,6 @@ class Person:
         self.items = items
         self.actions = ["Attack", "Magic", "Items"]
 
-
     def generate_damage(self):
         return random.randrange(self.atkl, self.atkh)
 
@@ -72,6 +71,6 @@ class Person:
 
         print("\n" + bcolors.OKGREEN + bcolors.BOLD + "Magic" + bcolors.ENDC)
         for item in self.items:
-            print("    ", str(i) + ".", item["item"].name + ":", item["item"].description, " (x" + str(item["quantity"]) + ")")
+            print("    ", str(i) + ".", item["item"].name + ":", item["item"].description,
+                  " (x" + str(item["quantity"]) + ")")
             i += 1
-
