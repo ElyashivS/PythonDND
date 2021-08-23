@@ -77,9 +77,55 @@ class Person:
                   " (x" + str(item["quantity"]) + ")")
             i += 1
 
-
     def get_stats(self):
-        print("\t\t\t\t\t   _________________________\t\t\t   __________")
+
+        hp_bar = ""
+        bar_ticks = (self.hp / self.maxhp) * 100 / 4  # The max number of bars is 25. that's why we divide by 4
+
+        mp_bar = ""
+        mp_ticks = (self.mp / self.maxmp) * 100 / 10
+
+        while bar_ticks > 0:
+            hp_bar += "█"
+            bar_ticks -= 1
+
+        while len(hp_bar) < 25:
+            hp_bar += " "
+
+        while mp_ticks > 0:
+            mp_bar += "█"
+            mp_ticks -= 1
+
+        while len(mp_bar) < 10:
+            mp_bar += " "
+
+        hp_string = str(self.hp) + "/" + str(self.maxhp)
+        current_hp = ""
+
+        if len(hp_string) < 9:  # 4 chars of current hp + 4 chars of max hp + "/" = 9
+            decreased = 9 - len(hp_string)
+            while decreased > 0:
+                current_hp += " "
+                decreased -= 1
+
+            current_hp += hp_string
+        else:
+            current_hp = hp_string
+
+        mp_string = str(self.mp) + "/" + str(self.maxmp)
+        current_mp = ""
+
+        if len(mp_string) < 7:  # 3 chars of current mp + 3 chars of max mp + "/" = 7
+            decreased = 7 - len(mp_string)
+            while decreased > 0:
+                current_mp += " "
+                decreased-= 1
+
+            current_mp += mp_string
+        else:
+            current_mp = mp_string
+
+        print("\t\t\t\t\t   _________________________\t\t\t __________")
         print(bcolors.BOLD + self.name + "\t\t"
-              + str(self.hp) + "/" + str(self.maxhp) + " |" + bcolors.OKGREEN + "██████████               " + bcolors.ENDC + bcolors.BOLD + "|\t\t"
-              + str(self.mp) + "/" + str(self.maxmp) + " |" + bcolors.OKBLUE + "██████████" + bcolors.ENDC + "|")
+              + current_hp + " |" + bcolors.OKGREEN + hp_bar + bcolors.ENDC + "|\t"
+              + current_mp + " |" + bcolors.OKBLUE + mp_bar + bcolors.ENDC + "|")
