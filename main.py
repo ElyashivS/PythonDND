@@ -83,7 +83,6 @@ while running:
 
             if magic_choice == -1:
                 continue
-
             spell = player.magic[magic_choice]
             magic_dmg = spell.generate_damage()
 
@@ -203,6 +202,6 @@ while running:
                       str(magic_dmg), "points of damage to " +
                       players[target].name.replace(" ", "") + bcolors.ENDC)
 
-            if players[target].get_hp() == 0:
-                print(players[target].name.replace(" ", "") + " has died.")
-                del players[target]
+                if players[target].get_hp() == 0:
+                    print(players[target].name.replace(" ", "") + " has died.")
+                    del players[target]
